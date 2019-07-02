@@ -1,0 +1,194 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Blog Design</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" typre="text/css" href="{% static 'css/font-awesome.min.css '%}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/w3.css'%}" />
+    <script src="{% static 'js/main.js '%}"></script>
+</head>
+<!-- replace all images  -->
+
+<body>
+    <div class="w3-row ">
+        <div class="w3-container  " style="padding: 0px;">
+            <!-- header and logo -->
+
+            <!-- navigtion  -->
+            <div class="w3-panel header-color" style="padding: 0px; margin: 0px; height: 60px;">
+
+                <div class="w3-bar ">
+
+                    <h3 class="w3-bar-item logo-text">tejumadeadetunji.com</h3>
+
+                    <!-- large sreens only -->
+                    <div class="w3-right w3-hide-small w3-hide-medium" style="padding-top: 10px">
+
+                        <a class="w3-bar-item w3-mobile" href="">/blog</a>
+                        <a class="w3-bar-item w3-mobile" href="">/projects</a>
+                        <a class="w3-bar-item w3-mobile" href="">/contact</a>
+
+                        <input type="text" class="w3-bar-item w3-input w3-mobile  round-left " placeholder="Search.. "
+                            style="margin-top: 3.5px;">
+                        <button href="#" class="w3-bar-item  round-right " style="margin-top: 3.5px; margin-right: 13px;"><i
+                                class="fa fa-search"></i></a>
+
+                    </div>
+                    <!-- ends large screen nav -->
+
+                    <!-- medium and small sreen nav bar -->
+                    <div id="ham" class="w3-right">
+                        <a id="menu" href="#" class="w3-bar-item w3-mobile w3-hide-large cross" onclick="cross()" style="font-size: 30px;">&#9776;</a>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="w3-row">
+                <!-- side bar left -->
+                <div class="w3-panel w3-quarter w3-padding w3-margin-right  w3-hide-medium w3-hide-small" style="margin-left: 40px; ">
+                    <h4 class="w3-center">Popular posts</h4>
+                    <div class="w3-card w3-center w3-margin-bottom">
+                        <li><img src="{% static 'images/blake-cheek-1255775-unsplash.jpg '%} " class="w3-image" style="height: 350px; width: 100%;">
+                            <div class="w3-padding">Understanding curses in python</div>
+                        </li>
+
+                    </div>
+                    <div class="w3-card w3-center w3-margin-bottom">
+                        <li>
+                            <img src="{% static 'images/vruyr-martirosyan-1249139-unsplash.jpg '%}" class="w3-image"
+                                style="height: 350px; width: 100%;">
+                            <div class="w3-padding">Python datatypes</div>
+                        </li>
+                    </div>
+                    <div class="w3-card w3-center w3-margin-bottom">
+                        <li>
+                            <img src="images/kylli-kittus-1252379-unsplash.jpg" class="w3-image" style="height: 350px; width: 100%;">
+                            <div class="w3-padding">List comprehension </div>
+                        </li>
+                    </div>
+                </div>
+                <!-- main content center column -->
+                <div class="w3-panel w3-col l5">
+                    {% for posts in post %}<div>
+
+
+                    </div>
+                    <div class="w3-panel w3-card w3-round-medium" style="padding-left: 0px; padding-right: 0px;">
+                        <img src="{% static 'images/jonny-mckenna-1255289-unsplash.jpg '%}" style="height: 350px; width: 100%;  "
+                            class="w3-image hello">
+
+                        <div class="w3-panel">
+                            <h1>{{ posts.title }}</h1>
+                            <span class="small">{{ posts.date_published }}</span>
+                            <div class="">
+                                 <p>{{ posts.content|safe }}</p>
+                                <!-- {% autoescape off %}
+                                     {{ posts.content|linebreaks }}
+                                {% endautoescape %} -->
+
+                                <a href="{{ posts.get_absolute_url }}"> <button class="w3-button">Read more >></button></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- <div class="w3-panel w3-card w3-round-medium " style="padding-left: 0px; padding-right: 0px;">
+                        <img src="images/adrian-trinkaus-1256026-unsplash.jpg" style="height: 350px; width: 100%;  "
+                            class="w3-image hello">
+
+                        <div class="w3-panel">
+                            <h1>Main content </h1>
+                            <span class="small">JUNE 21, 2016</span>
+                            <div class="">
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem labore voluptates
+                                    voluptatum blanditiis atque aut enim? Voluptatem officia, possimus ea saepe
+                                    minima
+                                    autem nobis dolor laudantium nesciunt numquam sit porro.</p>
+                                <button class="w3-button">Read more >></button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="w3-panel w3-card w3-round-medium " style="padding-left: 0px; padding-right: 0px;">
+                        <img src="images/vruyr-martirosyan-1249139-unsplash.jpg" style="height: 350px; width: 100%;  "
+                            class="w3-image hello">
+
+                        <div class="w3-panel">
+                            <h1>Main content </h1>
+                            <span class="small">JUNE 21, 2016</span>
+                            <div class="">
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem labore voluptates
+                                    voluptatum blanditiis atque aut enim? Voluptatem officia, possimus ea saepe
+                                    minima
+                                    autem nobis dolor laudantium nesciunt numquam sit porro.</p>
+                                <button class="w3-button">Read more >></button>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+
+
+                <!-- sidebar right -->
+                <div class="w3-panel w3-quarter w3-padding w3-margin-left  w3-hide-medium w3-hide-small" style="">
+                    <div class="w3-card w3-center">
+                        <img src="{% static 'images/jonny-mckenna-1255289-unsplash.jpg '%}" style="width: 100%; height: 300px;">
+
+                        <h3>About Author</h3>
+
+                        <p class="w3-padding">He comes a land far away Lorem ipsum dolor sit amet, consectetur
+                            adipisicing elit. Recusandae expedita autem nam magni obcaecati asperiores, provident
+                            debitis impedi ratione,nisi sunt est eius! Aperiam, mollitia reiciendis repudiandae
+                            officiis velit delectus.</p>
+                    </div>
+                    <div class="w3-card w3-center w3-margin-bottom">
+
+                        <li><img src="{% static 'images/blake-cheek-1255775-unsplash.jpg '%}" class="w3-image" style="height: 350px; width: 100%;"></li>
+
+                    </div>
+
+                    <div class="w3-card w3-center w3-margin-bottom">
+
+                        <li><img src="{% static 'images/vruyr-martirosyan-1249139-unsplash.jpg '%}" class="w3-image"
+                                style="height: 350px; width: 100%;"></li>
+
+                    </div>
+                    <div class="w3-card w3-center w3-margin-bottom">
+
+                        <li><img src="{% static 'images/kylli-kittus-1252379-unsplash.jpg '%}" class="w3-image" style="height: 350px; width: 100%;"></li>
+
+                    </div>
+                </div>
+                <!-- pagination -->
+                <div class="w3-row w3-center">
+                    <div class="w3-bar">
+                        {% if post.has_previous %}
+                        <a href="?page={{ post.previous_page_number }}" class="w3-button ">&ll;</a>
+                        {% endif %}
+
+                        <a href="?page={{ post.number }}" class="w3-button w3-blue">{{ post.number }}</a>
+
+                        {% if post.has_next %}
+                        <a href="?page={{ post.next_page_number }}" class="w3-button">&Gt;</a>
+                        {% endif %}
+                    </div>
+
+
+                </div>
+                <div class="w3-panel w3-dark-grey w3-center" style="margin-bottom: 0px;">
+                    <h1>Footer</h1>
+                    <p>Made with <i class="fa fa-heart-o" style="color: red; "></i> and django</p>
+                </div>
+
+
+            </div>
+        </div>
+</body>
+
+</html>

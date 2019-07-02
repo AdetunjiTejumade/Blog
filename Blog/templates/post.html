@@ -1,0 +1,192 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" typre="text/css" href="{% static 'css/font-awesome.min.css '%}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/w3.css'%}" />
+    <script src="{% static 'js/main.js '%}"></script>
+</head>
+
+<body>
+    <div class="w3-row">
+        <div class="w3-container" style="padding: 0px;">
+
+
+            <!-- Header includes logo and nav bar -->
+            <div class="w3-panel header-color" style="padding: 0px; margin: 0px; height: 60px;">
+
+                <div class="w3-bar ">
+
+                    <h3 class="w3-bar-item logo-text">tejumadeadetunji.com</h3>
+
+                    <!-- large sreens only -->
+                    <div class="w3-right w3-hide-small w3-hide-medium" style="padding-top: 10px">
+
+                        <a class="w3-bar-item w3-mobile" href="">/blog</a>
+                        <a class="w3-bar-item w3-mobile" href="">/projects</a>
+                        <a class="w3-bar-item w3-mobile" href="">/contact</a>
+
+                        <input type="text" class="w3-bar-item w3-input w3-mobile  round-left " placeholder="Search.. "
+                            style="margin-top: 3.5px;">
+                        <button href="#" class="w3-bar-item  round-right " style="margin-top: 3.5px; margin-right: 13px;"><i
+                                class="fa fa-search"></i></a>
+
+                    </div>
+                    <!-- ends large screen nav -->
+
+                    <!-- medium and small sreen nav bar -->
+                    <div id="ham" class="w3-right">
+                        <a id="menu" href="#" class="w3-bar-item w3-mobile w3-hide-large cross" onclick="cross()" style="font-size: 30px;">&#9776;</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- main content -->
+        <div class="w3-row screen">
+            <div class="w3-container">
+                <h1>{{ blog.title }}</h1>
+                <h3>9.18.2019</h3>
+            </div>
+            <div class="w3-col l8  margin-right w3-padding ">
+
+                <p class="first"> {{ blog.content|safe }}
+                </p>
+            </div>
+            <!-- related post for large sreen size -->
+            <div class="w3-rest  w3-padding w3-hide-medium w3-hide-small">
+                <div class="">
+                    <h1>Table of content</h1>
+                    <ul>
+                        <li>Installation</li>
+                        <li>Curses in game development</li>
+                        <li>Conclusion</li>
+                    </ul>
+                </div>
+
+                <div class="w3-card w3-margin-bottom ">
+
+                    <div class="w3-container">
+                        <h1>Hello world</h1>
+                        <p>MY life in new york was a blast</p>
+                    </div>
+                </div>
+
+                <div class="w3-card w3-margin-bottom ">
+
+                    <div class="w3-container">
+                        <h1>Hello world</h1>
+                        <p>MY life in new york was a blast</p>
+                    </div>
+                </div>
+
+                <div class="w3-card w3-margin-bottom ">
+
+                    <div class="w3-container">
+                        <h1>Hello world</h1>
+                        <p>MY life in new york was a blast</p>
+                    </div>
+                </div>
+
+                <div class="w3-card w3-center w3-margin-bottom">
+
+                    <li><img src="{% static 'images/kylli-kittus-1252379-unsplash.jpg '%}" class="w3-image" style="height: 200px; width: 100%;"></li>
+
+                </div>
+                <div class="w3-card w3-center w3-margin-bottom">
+
+                    <li><img src="{% static 'images/kylli-kittus-1252379-unsplash.jpg '%}" class="w3-image" style="height: 200px; width: 100%;"></li>
+
+                </div>
+                <div class="w3-card w3-center w3-margin-bottom">
+
+                    <li><img src="{% static 'images/kylli-kittus-1252379-unsplash.jpg '%}" class="w3-image" style="height: 200px; width: 100%;"></li>
+
+                </div>
+
+
+            </div>
+            <!-- related post for small and medium size sreens -->
+            <div class="w3-row w3-margin-bottom w3-container w3-hide-large">
+                <div class="w3-card w3-col l3  margin">
+                    <img src="{% static 'images/kylli-kittus-1252379-unsplash.jpg '%}" class="w3-image" style="width: 100%; height: 100px;">
+                    <div class="w3-container">
+                        <h1>Micro python</h1>
+                        <h3>Date published. 09.06.2019</h3>
+                    </div>
+                </div>
+
+
+
+                <div class="w3-card w3-col l3  margin ">
+                    <img src="{% static 'images/kylli-kittus-1252379-unsplash.jpg '%}" class="w3-image" style="width: 100%; height: 100px;">
+                    <div class="w3-container">
+                        <h1>Aws amazom</h1>
+                        <h3>Date published. 12.05.2019</h3>
+                    </div>
+                </div>
+
+                <div class="w3-card w3-col l3  margin ">
+                    <img src="{% static 'images/kylli-kittus-1252379-unsplash.jpg '%}" class="w3-image" style="width: 100%; height: 100px;">
+                    <div class="w3-container">
+                        <h1>Vue.js 101</h1>
+                        <h3>Date published. 15.05.2019</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- comment section -->
+            <div class="w3-row w3-container w3-col l7">
+                <h1>Response</h1>
+                
+                <div class="w3-container w3-margin-bottom">
+                    {% for comment in comments %}      
+                    <div class="w3-container">
+                        <img src=" {% static 'images/user.SQUARE2.png '%}" class="w3-circle" style="height: 60px;">
+                    </div>
+                    <div class="w3-container">
+                        <p>{{ comment.author }}</p>
+                        <p class="w3-text-red">{{ comment.created_date }}</p>
+                    </div>
+                    <div class="w3-container">
+                        <P>{{ comment.text }}</P>
+                        
+                    </div>
+
+
+                    
+                    
+                    {% empty %}
+                        <p> Be the first to comment</p>
+                    {% endfor %}
+                </div>
+                
+<!-- reply coming soon -->
+               
+
+                
+
+                <form method="POST">{% csrf_token %}
+                   {{ form.as_p }}
+                   <button class="w3-btn w3-red">submit</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="w3-panel w3-dark-grey w3-center" style="margin-bottom: 0px;">
+        <h1>Footer</h1>
+        <p>Made with <i class="fa fa-heart-o" style="color: red; "></i> and django</p>
+    </div>
+    </div>
+</body>
+
+</html>
