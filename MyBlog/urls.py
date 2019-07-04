@@ -19,12 +19,6 @@ from Blog.views import blog_view, detail_view, post_remove
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-#from django.conf.urls import url, include
-
-# MEDIA_URL = ''
-# MEDIA_ROOT = 'os.path.join(BASE_DIR, "media")'
-
 urlpatterns = [
    path('admin/', admin.site.urls),
    path('summernote/', include('django_summernote.urls')),
@@ -34,15 +28,3 @@ urlpatterns = [
  ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    # urlpatterns += static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)
-# STATIC_URL = '/static/'
-# STATIC_ROOT = 'os.path.join(BASE_DIR, "static/images")'
-
-# if settings.DEBUG:+  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    
-
-# urlpatterns = [
-#     url('jet/', include('jet.urls', 'jet')),
-#     url('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET URLS
-#     url('admin/', admin.site.urls),
-# ]

@@ -1,0 +1,4 @@
+saving to draft 
+correcting pagination
+number of comments
+edit and delete post link for authenticated users

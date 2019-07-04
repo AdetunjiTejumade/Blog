@@ -4,17 +4,20 @@ from django.core.paginator import Paginator
 from .form import CommentForm
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
+from django.utils import timezone
 
 # Create your views here.
 
 def blog_view(request):
-    posts = post.objects.all()   
+    posts =  post.objects.order_by('-date_published')
+
+    # post.objects.order_by('date_published')  
 
     paginator = Paginator(posts, 4)
 
     page = request.GET.get('page')
     contact = paginator.get_page(page)
-    
+
     context = {
         'post':contact 
     }

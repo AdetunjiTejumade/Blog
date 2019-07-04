@@ -9,6 +9,8 @@ class post(models.Model):
     def get_absolute_url(self):
         return f"/{self.id}/"
 
+    class Meta:
+        ordering = ['-date_published',]
 
 class Comment(models.Model):
     post = models.ForeignKey('Blog.Post', on_delete=models.CASCADE, related_name='comments')
