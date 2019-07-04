@@ -22,8 +22,8 @@ from django.conf.urls.static import static
 
 #from django.conf.urls import url, include
 
-MEDIA_URL = ''
-MEDIA_ROOT = 'os.path.join(BASE_DIR, "media")'
+# MEDIA_URL = ''
+# MEDIA_ROOT = 'os.path.join(BASE_DIR, "media")'
 
 urlpatterns = [
    path('admin/', admin.site.urls),
@@ -31,7 +31,10 @@ urlpatterns = [
    path('', blog_view),
    path('<int:blog_id>/', detail_view, name="detail"),
    path('<int:blog_id>/delete', post_remove, name='post_remove'),
- ] +  static(MEDIA_URL, document_root=MEDIA_ROOT)
+ ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # urlpatterns += static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)
 # STATIC_URL = '/static/'
 # STATIC_ROOT = 'os.path.join(BASE_DIR, "static/images")'
 

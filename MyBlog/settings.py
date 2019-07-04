@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -120,8 +121,18 @@ USE_L10N = True
 
 USE_TZ = True
 
+# SUMMERNOTE editor configuration
+def summernote_custom_upload_to():
+    return "media/" + datetime.datetime.now().strftime("%Y/%m")
 
+SUMMERNOTE_CONFIG = {
+    'prettifyHtml': False,
+    'attachment_upload_to': summernote_custom_upload_to()
+    }
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+# MEDIA_ROOT = 'os.path.join(BASE_DIR, "media/")'
